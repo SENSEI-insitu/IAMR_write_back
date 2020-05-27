@@ -127,7 +127,7 @@ hierarchy as a collection of blocks, however one can also access domain map ,
 box arrays, refinement ratios etc via dataAdaptor.GetMeshMetadata API. One can
 also process the mesh level by level by casting the mesh object to a
 vtkOverlappingAMR object.
-```
+```Python
 import sys
 import numpy as np
 import vtk.util.numpy_support as vtknp
