@@ -10,7 +10,8 @@ field is below 1.1. Data is passed from IAMR into the Python script using a
 zero-copy mechanism so that modifications to the passed arrays are seen by
 IAMR. We use numpy to manipulate simulation data. However, note that some numpy
 operations make intermediates and copies of the data and thus one may need to
-explicitly copy calculations using VTK APIs.
+explicitly copy calculations using VTK APIs. For this one would use `SetValue`
+method of the data array class.
 
 The folloing figure shows the run with(right) and without(left) the SENSEI
 script activated:
@@ -29,16 +30,18 @@ git clone https://github.com/SENSEI-insitu/SENSEI_superbuild.git
 cd SENSEI_superbuild
 mkdir build && cd build
 
-cmake -DENABLE_READLINE=ON \
-    -DENABLE_MPICH=OFF -DENABLE_CRAY_MPICH=ON \
-    -DSENSEI_BRANCH=develop \
-    -DSENSEI_BACKEND=python ../
+cmake -DENABLE_MPICH=OFF -DENABLE_CRAY_MPICH=ON \
+    -DSENSEI_BACKEND=python -DSENSEI_BRANCH=develop \
+    ..
 
 make -j32
 make -j32 install
 ```
 This should install SENSEI for use with Python next to
 the `SENSEI_Superbuild` clone in a directory named `sensei-develop-python`.
+
+Note: for a workstation build use `-DENABLE_MPICH=ON -DENABLE_CRAY_MPICH=OFF`
+instead.
 
 
 ## Using SENSEI with the Python backend
