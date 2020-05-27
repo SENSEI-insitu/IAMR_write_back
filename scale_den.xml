@@ -1,0 +1,19 @@
+<sensei>
+  <!-- Place this XML and the Python file in the same directory
+       as the IAMR executable -->
+  <analysis type="python" script_file="scale_den.py" enabled="1">
+
+     <!-- Runtime control variables. The field named by arrayName is
+          scaled by the multiplier where it is below the threshold.
+          Note that this is Python code and there for indentation
+          of the code must follow Python's rules -->
+    <initialize_source>
+arrayCen = vtkDataObject.CELL
+meshName='mesh'
+arrayName='density'
+threshold=1.1
+multiplier=0.8
+verbose = True
+     </initialize_source>
+  </analysis>
+</sensei>

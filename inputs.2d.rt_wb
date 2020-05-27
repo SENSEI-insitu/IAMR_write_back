@@ -1,0 +1,35 @@
+# 2D Rayleigh-Taylor inputs,
+max_step                = 100
+stop_time               = 2.5
+ns.do_vorticity_ref     = 1
+amr.n_cell              = 64  128
+amr.max_grid_size       = 32
+amr.grid_eff            = 0.95
+amr.max_level           = 2
+amr.regrid_int          = 2
+amr.ref_ratio           = 2 2
+ns.v                    = 1
+amr.v                   = 1
+amr.check_int           = 50
+amr.plot_int            = 1
+ns.cfl                  = 0.9
+ns.init_shrink          = 0.1
+ns.vel_visc_coef        = 0.0
+ns.scal_diff_coefs      = 0.0
+ns.gravity              = -1.0
+amr.probin_file         = probin.2d.rt
+geometry.coord_sys      = 0
+geometry.prob_lo        = 0. 0.
+geometry.prob_hi        = 0.5 1.0
+geometry.is_periodic    = 1 0
+ns.lo_bc                = 0 4
+ns.hi_bc                = 0 2
+amr.blocking_factor     = 8
+amr.derive_plot_vars    = mag_vort diveru avg_pressure
+
+# SENSEI in situ controls
+sensei.enabled      = 1
+sensei.config       = scale_den.xml
+sensei.frequency    = 3
+
+

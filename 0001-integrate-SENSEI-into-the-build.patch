@@ -1,0 +1,55 @@
+From d399aaee6434f04682f4718d0cbad1c39b65e78c Mon Sep 17 00:00:00 2001
+From: Burlen Loring <bloring@lbl.gov>
+Date: Thu, 27 Feb 2020 15:34:59 -0800
+Subject: [PATCH] integrate SENSEI into the build
+
+---
+ Exec/Make.IAMR         | 4 ++++
+ Exec/run2d/GNUmakefile | 2 ++
+ Exec/run3d/GNUmakefile | 2 ++
+ 3 files changed, 8 insertions(+)
+
+diff --git a/Exec/Make.IAMR b/Exec/Make.IAMR
+index 20fbdebc..3e1578b6 100644
+--- a/Exec/Make.IAMR
++++ b/Exec/Make.IAMR
+@@ -35,6 +35,10 @@ ifeq ($(USE_HYPRE),TRUE)
+   Pdirs += Extern/HYPRE
+ endif
+ 
++ifeq ($(USE_SENSEI_INSITU),TRUE)
++    Pdirs += Extern/SENSEI
++endif
++
+ Ppack   += $(foreach dir, $(Pdirs), $(AMREX_HOME)/Src/$(dir)/Make.package)
+ include $(Ppack)
+ 
+diff --git a/Exec/run2d/GNUmakefile b/Exec/run2d/GNUmakefile
+index 18b76d64..04123954 100644
+--- a/Exec/run2d/GNUmakefile
++++ b/Exec/run2d/GNUmakefile
+@@ -20,6 +20,8 @@ PROFILE     = FALSE
+ 
+ USE_CUDA = FALSE
+ 
++USE_SENSEI_INSITU = FALSE
++
+ EBASE = amr
+ 
+ Bpack   := ./Make.package
+diff --git a/Exec/run3d/GNUmakefile b/Exec/run3d/GNUmakefile
+index bec78f7d..181bf4d3 100644
+--- a/Exec/run3d/GNUmakefile
++++ b/Exec/run3d/GNUmakefile
+@@ -33,6 +33,8 @@ USE_VELOCITY = FALSE
+ USE_XBLAS = TRUE
+ USE_XBLAS = FALSE
+ 
++USE_SENSEI_INSITU = FALSE
++
+ EBASE     = amr
+ 
+ ifeq (${USE_FLCTS}, TRUE)
+-- 
+2.25.1
+
